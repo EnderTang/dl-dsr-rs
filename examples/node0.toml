@@ -1,0 +1,29 @@
+node_id = 0
+bind_addr = "127.0.0.1:7000"
+protocol_mode = "DlDsr"
+hello_interval_ms = 800
+route_cache_ttl_ms = 30000
+neighbor_ttl_ms = 5000
+log_level = "info"
+control_bind_addr = "127.0.0.1:9000"
+metrics_output_path = "/tmp/dldsr-node0-metrics.json"
+
+[[topology.nodes]]
+node_id = 0
+endpoint = "127.0.0.1:7000"
+neighbors = [1]
+
+[[topology.nodes]]
+node_id = 1
+endpoint = "127.0.0.1:7001"
+neighbors = [0, 2]
+
+[[topology.nodes]]
+node_id = 2
+endpoint = "127.0.0.1:7002"
+neighbors = [1, 3]
+
+[[topology.nodes]]
+node_id = 3
+endpoint = "127.0.0.1:7003"
+neighbors = [2]

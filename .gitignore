@@ -1,0 +1,21 @@
+# Rust build output
+/target/
+
+# Generated local demo/benchmark files
+# docker-compose.generated.yml
+
+# Local tool/session state
+/.agents/
+/.codex/
+
+# Logs and temporary files
+*.log
+*.tmp
+*.md.tmp
+
+# Local editor/OS noise
+.DS_Store
+.vscode/
+.idea/
+*.swp
+*~

@@ -1,0 +1,58 @@
+services:
+  node0:
+    build:
+      context: .
+      dockerfile: docker/Dockerfile
+    environment:
+      NODE_ID: "0"
+      BIND_ADDR: "0.0.0.0:7000"
+      MODE: "dldsr"
+      TOPOLOGY: "/app/docker/topology/chain-4.toml"
+      SEND_DST: "3"
+      PAYLOAD: "hello from docker compose"
+      SEND_AFTER_MS: "2500"
+    networks:
+      dldsr-net:
+        ipv4_address: 172.28.0.10
+  node1:
+    build:
+      context: .
+      dockerfile: docker/Dockerfile
+    environment:
+      NODE_ID: "1"
+      BIND_ADDR: "0.0.0.0:7000"
+      MODE: "dldsr"
+      TOPOLOGY: "/app/docker/topology/chain-4.toml"
+    networks:
+      dldsr-net:
+        ipv4_address: 172.28.0.11
+  node2:
+    build:
+      context: .
+      dockerfile: docker/Dockerfile
+    environment:
+      NODE_ID: "2"
+      BIND_ADDR: "0.0.0.0:7000"
+      MODE: "dldsr"
+      TOPOLOGY: "/app/docker/topology/chain-4.toml"
+    networks:
+      dldsr-net:
+        ipv4_address: 172.28.0.12
+  node3:
+    build:
+      context: .
+      dockerfile: docker/Dockerfile
+    environment:
+      NODE_ID: "3"
+      BIND_ADDR: "0.0.0.0:7000"
+      MODE: "dldsr"
+      TOPOLOGY: "/app/docker/topology/chain-4.toml"
+    networks:
+      dldsr-net:
+        ipv4_address: 172.28.0.13
+networks:
+  dldsr-net:
+    driver: bridge
+    ipam:
+      config:
+        - subnet: 172.28.0.0/16
